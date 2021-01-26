@@ -14,7 +14,7 @@ async def main(host: str, endpoint: str, message: str):
         },
     )
     redis = await aioredis.create_redis_pool(host)
-    await redis.lpush("acapy.outbound_transport", msg)
+    await redis.rpush("acapy.outbound_transport", msg)
 
 
 if __name__ == "__main__":
