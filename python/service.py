@@ -40,7 +40,12 @@ class RedisHandler:
                 elif b"payload" not in msg:
                     log_error("No payload provided")
                 else:
-                    headers = msg.get(b"headers") or {}
+                    headers = {}
+                    if b"headers" in msg:
+                        for hname, hval in msg[b"headers"].items():
+                            if isinstance(hval, bytes):
+                                hval = hval.decode("utf-8")
+                            headers[hname.decode("utf-8")] = hval
                     endpoint = msg[b"endpoint"].decode("utf-8")
                     payload = msg[b"payload"]
                     parsed = urllib.parse.urlparse(endpoint)
