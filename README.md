@@ -7,6 +7,8 @@ requested endpoint.
 
 To start the test Redis server, execute `run.sh` in the `test-server` directory.
 
+The default redis URL is `redis://localhost:6379`
+
 ## Running the Python demo service
 
 From the `python` directory:

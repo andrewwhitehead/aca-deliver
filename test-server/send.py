@@ -9,7 +9,7 @@ async def main(host: str, endpoint: str, message: str):
     msg = msgpack.packb(
         {
             "endpoint": endpoint,
-            "headers": {},
+            "headers": {"Content-Type": "text/json"},
             "payload": message.encode("utf-8"),
         },
     )
